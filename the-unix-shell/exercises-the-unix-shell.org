@@ -144,14 +144,14 @@ Have any of these cd commands worked? Why? For the cases it haven't worked, make
 
 *** B2 Troubles with file permissions
 
-#+begin_src bash
-cd useless-dir
-pwd
-cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
-#+end_src
+# #+begin_src bash
+# cd useless-dir
+# pwd
+# cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
+# #+end_src
 
 *** B3 Hidden files
-There is a hidden directory in the corner-cases directory. List it and write down its name.
+# There is a hidden directory in the corner-cases directory. List it and write down its name.
 
 ** Dissecting command line expansions
 
@@ -192,7 +192,7 @@ cat *.txt
 See [[http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion][brace expansion]] in the bash manual.
 
 
-**** Practice file name expansion
+#**** Practice file name expansion
 
 ** Example project: Bash history tweaking
 
