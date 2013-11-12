@@ -46,7 +46,6 @@
 *** Root directory (/)
 *** Hidden files (.*)
 
-
 ** Make, copy, move, delete commands
 
 *** Create a directory: *mkdir*
@@ -152,16 +151,17 @@ done
 *** Set variable value: VARIABLE_NAME=value
 *** Get variable value: $VARIABLE_NAME
 *** Variable scope (*export*)
+*** Variables are inherited from the parent process
 *** Sourcing scripts: *source* or *.*
 *** $EDITOR
 *** $PATH
+*** $CDPATH
 *** $PWD
 *** $LOGNAME
 *** $HOME
 *** $PYTHONPATH
 *** $GIT_COMMITTER_NAME
 *** ...
-
 
 ** Job control
 
@@ -185,7 +185,6 @@ done
 *** Real-time streaming of a file: *tail -f*
 *** Experiment: highly concurrent file rewrite
 
-
 ** Understanding better the file system
 
 *** In unix everything is a file
@@ -193,6 +192,11 @@ done
 *** The truth about redirection
 *** File descriptors
 *** 2>&1
+*** When to use pipes, backquotes, xargs, exec in find?
+- Use the need for xargs to ilustrate the difference between programs that read from stdin as opposed to programs that read their parameters from lists in the command line.
+- Show their man, programs reading from stdin usually wait or show [FILE] in their synopsis.
+- exec for stuff that runs once at a time
+- think of a good and clear example
 *** Devices (/dev)
 *** Mounting (*mount*)
 *** Mounting points
@@ -204,7 +208,6 @@ done
 *** Archive keeping permissions (*tar*)
 *** Compression (*gzip*)
 *** Archive and compress (*tar cz*)
-
 
 ** Tweaking bash to increase productivity
 

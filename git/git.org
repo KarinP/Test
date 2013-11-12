@@ -1,1 +1,34 @@
+#+STARTUP: indent
+#+STARTUP: showstars
+
 * Managing Change: Version Control with *git*
+
+** A gentle introduction to git
+*** Why do we need version control?
+**** Managing change
+**** Not only for collaboration
+*** Git
+*** There is no magic: git command (*git*)
+*** There is no magic: git repository (*.git*)
+*** git subcommands (*git --help*)
+*** git subcommands are autocompleted
+*** Git vs github
+*** Looking at a repository: *git status*
+*** Looking at a repository: *git log*
+*** Looking at a repository: *gitk*
+*** The key to not getting into trouble: being systematic
+
+** Getting into bussines: creating your own repository
+
+*** Initializing a git repository: *git init*
+*** Initializing a "bare" git repository: *git init --bare*
+*** Setting-up a remote to our repository
+*** Adding a file to the repository *git add*
+*** Adding changes to the repository *git add*
+*** Actually adding changes to a repository
+
+** Git internals
+*** Hashes
+*** Commits
+*** Branches
+*** ...

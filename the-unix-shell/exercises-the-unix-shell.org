@@ -112,7 +112,88 @@ Was it needed here?
 **** What is the script purpose?
 
 ** Walking around the directory tree
+The shell has associated a "working directory". The commands *pwd* and *cd* allow us to print and change the working directory. These are basic easy to use tools, but there are corner cases using them...
+
+*** B1 Troubles changing directories
+Change your working directory to your exercises "corner-cases" directory. For example:
+#+begin_src bash
+cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
+#+end_src
+
+List the directory. Always using (the simplest) relative path from the "corner-cases" directory, try to change your directory to the following subdirectories:
+#+begin_src bash
+cd -dir-starting-with-dash
+pwd
+cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
+
+cd --dir-starting-with-doubledash and with spaces
+pwd
+cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
+
+cd -dir-starting-with-dash
+pwd
+cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
+
+#+end_src
+
+Have any of these cd commands worked? Why? For the cases it haven't worked, make it work. Tips:
+
+- How does cd interpret the dashes at the start of these directories names? There are a couple of ways of solving this...
+
+- Once you know how to solve the "initial dash" problem, you might run into another problem and change to a directory different from the one you wanted to. What happened? How do you actually change to the directory we want to change to?
+
+*** B2 Troubles with file permissions
+
+#+begin_src bash
+cd useless-dir
+pwd
+cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
+#+end_src
+
+*** B3 Hidden files
+There is a hidden directory in the corner-cases directory. List it and write down its name.
+
 ** Dissecting command line expansions
+
+When the shell runs a command, it first *expands* the command line. Command line expansion transforms the command line by substituting several types of "expansions" (parts of the command line that are meant to be interpreted as something different than their literal translation) by its expanded value. For bash, a quite technically oriented explanation of all the possible expansions can be found in its [[http://www.gnu.org/software/bash/manual/bashref.html#Shell-Expansions][manual]] (which we can consult locally by running *man bash* or *info bash*). Expansion should also explained in detail in any book about the shell.
+
+*** C1 Visualizing command lines expansion
+
+Is there a way in which we could see what is the actual expansion that bash performs for us before calling our script? There is, and it is quite simple.
+
+When executed, [[./scripts/show-command-line-expanded.sh*][the following script]] will print the command line as expanded by the parent shell.
+#+begin_src bash
+#!/bin/bash
+echo "$0 $*"
+#+end_src bash
+
+How does this work? In a bash script bash provides us with [[http://www.gnu.org/software/bash/manual/bashref.html#Shell-Parameters][several useful variables]]. In this example we use two of them: *$0* represents the name of the program and *$** is the complete list of parameters, as expanded by the parent shell. Note that these are read only variables.
+
+Let's use this script to visualize the different command line expansions from bash.
+
+**** Is there any simpler alternative to the previous script?
+
+Do we already know other command(s) that could help us to easily visualize the expanded command line?
+We probably did not need to write our own script...
+
+
+**** Practice brace expansion
+
+What does the following expand to?
+#+begin_src bash
+cat {gal80,gal4,"Green Fluorescent Protein"}.txt
+#+end_src bash
+
+In which situation could such a command be useful? Contrast it to using filename expansion as in here:
+#+begin_src bash
+cat *.txt
+#+end_src bash
+
+See [[http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion][brace expansion]] in the bash manual.
+
+
+**** Practice file name expansion
+
 ** Example project: Bash history tweaking
 
 *** The truth about the bash history mechanism
@@ -123,7 +204,48 @@ Was it needed here?
 *** Discussion: [[http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows][Tweaking the history mechanism behavior]]
 
 ** Example project: Plotting molecules
+*** PM1 Organize pdb files by their file contents
+Goals: practice grep, pipes and symlinks
+*** PM2 Downloading pdb files using wget and curl
+Goals: practice xargs, backquoting
+*** PM3 Extracting atom coordinates and plot them
+Goals: practice grep with regular expressions
 
 ** Example project: Analyzing trajectories
 
 ** Example project: Managing fly stocks
+** ProExercises
+
+These are exercises that go beyond the basics...
+
+*** P1 What is the current working directory of a GUI application?
+
+Actually *any* program running in your system (process) has an associated working directory.
+
+For example, execute libreoffice impress (or any other gui program you might have installed):
+#+begin_src bash
+loffice --help
+loffice --impress
+#+end_src
+
+A new libreoffice process should run. What is its process id? There are many ways to find out, one of them is using pgrep.
+#+begin_src bash
+pgrep loffice
+#+end_src
+
+Now that we know the process id, there are also several ways of querying the system for its current working directory. One of them is the program *pwdx*. If you man for pwdx...
+
+#+begin_src bash
+man pwdx
+----------------------------------------------
+NAME
+       pwdx - report current working directory of a process
+
+SYNOPSIS
+       pwdx [options] pid [...]
+...
+#+end_src
+
+Write a command line that, given a program name (or more in general, a regular expression matching program names), shows its current working directory. My solution uses pgrep, pwdx and backquote expansion and can show more than one process at a time (given that pwdx accepts a list of process ids, as indicated in the SYNOPSIS by "[...]").
+
+As a side note, sometimes the PWD of GUI applications correspond to what you see in "choose file dialogs". Is it the case for mozilla firefox?
