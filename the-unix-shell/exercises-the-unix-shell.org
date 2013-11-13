@@ -1,5 +1,12 @@
 * Unix Shell Exercises
 
+List of posted exercises:
+
+- [[A1]], [[A2]]
+- B1, B2, B4
+- C1, C2
+- PE1
+
 There is no way to learn shell (or git or python...) without using it. Here is some training. Comments:
 
 - I will be adding more exercises to this file. I will split the file if it gets too crowded. But exercises numeration (A1, A2, B1...) will keep constant.
@@ -19,6 +26,7 @@ There is no way to learn shell (or git or python...) without using it. Here is s
 
 ** Run the initialization script
 *** A1 Generate the exercises playground, create a command list
+<<A1>>
 
 Run the following commands in an interactive shell. Let me know if something goes wrong.
 
@@ -62,13 +70,13 @@ nano command-table.org
 #+end_src
 
 *** A2 Look into the initialisation script
-
-As a general rule, one should always be aware and mildly trust whatever is being executed. Let's have a look at the script we have just run:
+<<A2>>
+As a general rule, one should always be aware of and mildly trust whatever is being executed. Let's have a look at the script we have just run:
 #+begin_src bash
 less ../scripts/initialize_exercises_dirtree.sh
 #+end_src
 
-We haven't explicitly seen yet some concepts we need to fully understand the script: variables, conditionals, links... The script is very simple despite some (unnecessary) complexity added for the sake of making the script work no matter of the current working directory.
+We haven't explicitly seen yet some concepts we need to fully understand the script: variables, conditionals, links... The script is very simple despite some (unnecessary) complexity added for the sake of making it work no matter of the current working directory.
 
 We will probably dissect this script in class. In the meantime, some questions for you to think:
 
@@ -138,20 +146,35 @@ cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
 
 Have any of these cd commands worked? Why? For the cases it haven't worked, make it work. Tips:
 
-- How does cd interpret the dashes at the start of these directories names? There are a couple of ways of solving this...
+- How does cd interpret the dashes at the start of these directories names? There are a couple of ways to solve this. One of them is the common way of separating options from "operands" (for example the file a command is operating on) and we will see it appearing again when we look at *git* command lines. The other solution is the easy solution ;-).
 
 - Once you know how to solve the "initial dash" problem, you might run into another problem and change to a directory different from the one you wanted to. What happened? How do you actually change to the directory we want to change to?
 
+ **Note: actually I was confused with what a [[http://en.wikipedia.org/wiki/Dash][dash]] is. Not exactly the same as minus sign/hyphen, but you get the point ;-)**
+
 *** B2 Troubles with file permissions
 
-# #+begin_src bash
-# cd useless-dir
-# pwd
-# cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases
-# #+end_src
+Let's now try to change to the poor directory called "useless-dir". We can do it using its absolute path as in:
+#+begin_src bash
+cd ~/carpentry/the-unix-shell/exercises/etienne/corner-cases/useless-dir
+pwd
+#+end_src
+
+This is an absolute path because before calling *cd* bash expands tilde (*~*) to the home directory of the current user (which you can also access querying the environment variable $HOME). Now, probably you have not been able to cd into the directory. The shell tells you that you are not allowed. What are the permissions for the useless-dir directory?
+
+You can go into the directory in two ways. One is to became root, the superuser, which can do anything she pleases, like enter directories even if she is not the owner and does not have permissions. If you are allowed, you can change your identity to that of another user. The command is *su*. Be careful if you change to root, great power comes with great responsibility. Usually you would be using [[http://xkcd.com/149/][*sudo*]] instead, that runs a single command as another user, which is deemed as a safer way of running commands as the superuser.
+
+Now use the command to change permissions file (*chmod*) to give the directory the minimum permissions needed to cd into it. Notice that even if you do not have permissions at all on that directory, you can still change the permissions because you are the owner. Now try to list the contents of the directory. If you cannot, change again minimally the permissions so that you can. Finally, if you agree with me that this is a useless directory, delete it. You can use the command *rmdir* and notice that you do not need to have write permissions to delete a directory.
 
 *** B3 Hidden files
 # There is a hidden directory in the corner-cases directory. List it and write down its name.
+*** B4 Troubles with file permissions 2
+So yes, there is a file in this path
+#+begin_src bash
+cd ~/the-unix-shell/exercises/santi/corner-cases/unreadable-dir/readable-dir
+pwd
+#+end_src
+
 
 ** Dissecting command line expansions
 
@@ -177,7 +200,7 @@ Do we already know other command(s) that could help us to easily visualize the e
 We probably did not need to write our own script...
 
 
-**** Practice brace expansion
+*** C2 Practice brace expansion
 
 What does the following expand to?
 #+begin_src bash
@@ -193,6 +216,7 @@ See [[http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion][brac
 
 
 #**** Practice file name expansion
+
 
 ** Example project: Bash history tweaking
 
@@ -218,7 +242,7 @@ Goals: practice grep with regular expressions
 
 These are exercises that go beyond the basics...
 
-*** P1 What is the current working directory of a GUI application?
+*** PE1 What is the current working directory of a GUI application?
 
 Actually *any* program running in your system (process) has an associated working directory.
 
