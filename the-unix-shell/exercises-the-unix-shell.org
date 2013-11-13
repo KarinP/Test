@@ -2,9 +2,10 @@
 
 List of posted exercises:
 
-- [[A1]], [[A2]]
-- B1, B2, B4
+- A1, A2
+- B1, B2, B3, B4
 - C1, C2
+- G1
 - PE1
 
 There is no way to learn shell (or git or python...) without using it. Here is some training. Comments:
@@ -26,7 +27,6 @@ There is no way to learn shell (or git or python...) without using it. Here is s
 
 ** Run the initialization script
 *** A1 Generate the exercises playground, create a command list
-<<A1>>
 
 Run the following commands in an interactive shell. Let me know if something goes wrong.
 
@@ -70,7 +70,6 @@ nano command-table.org
 #+end_src
 
 *** A2 Look into the initialisation script
-<<A2>>
 As a general rule, one should always be aware of and mildly trust whatever is being executed. Let's have a look at the script we have just run:
 #+begin_src bash
 less ../scripts/initialize_exercises_dirtree.sh
@@ -167,14 +166,27 @@ You can go into the directory in two ways. One is to became root, the superuser,
 Now use the command to change permissions file (*chmod*) to give the directory the minimum permissions needed to cd into it. Notice that even if you do not have permissions at all on that directory, you can still change the permissions because you are the owner. Now try to list the contents of the directory. If you cannot, change again minimally the permissions so that you can. Finally, if you agree with me that this is a useless directory, delete it. You can use the command *rmdir* and notice that you do not need to have write permissions to delete a directory.
 
 *** B3 Hidden files
-# There is a hidden directory in the corner-cases directory. List it and write down its name.
+There is a hidden directory in the corner-cases directory. Just list it.
 *** B4 Troubles with file permissions 2
-So yes, there is a file in this path
+There is a file under this path and you can read it. OK, not so much of a secret...
 #+begin_src bash
-cd ~/the-unix-shell/exercises/santi/corner-cases/unreadable-dir/readable-dir
-pwd
+cat ~/the-unix-shell/exercises/santi/corner-cases/unreadable-dir/readable-dir/secret-message.txt
+cd ~/the-unix-shell/exercises/santi/corner-cases/unreadable-dir/readable-dir/
 #+end_src
 
+However, *find* fails to find it...
+#+begin_src bash
+find ~/the-unix-shell/exercises/santi/corner-cases/unreadable-dir/readable-dir
+#+end_src
+(note that *find* without any parameter lists all the files it can list under the directory).
+
+We also have troubles with tab-completion. For example, type...
+#+begin_src bash
+cd ~/the-unix-shell/exercises/santi/corner-cases/unreadable-dir
+#+end_src
+...and hit tab. Can you see any completion for "readable-dir"?
+
+What do this tell us about how find and tab completion work? Can you think of a way of finding that file without changing the directory permissions?
 
 ** Dissecting command line expansions
 
@@ -216,6 +228,58 @@ See [[http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion][brac
 
 
 #**** Practice file name expansion
+
+** Practicing find, grep and friends
+*** G1 Find all the git repositories in the file system and list their remotes
+Directories under control of git (let's call them at the moment "git repositories with associated working copy") contain a hidden directory called ".git". As we will see, it is in ".git" that all of the git magic happen. We will also see how important is to keep
+
+**** Find all the git repositories in the filesystem that can be used as the current user
+Let's define as usable git repository directories called ".git" which we can read, write and transverse (aka execution permission for directories). My command looks like...
+
+#+begin_src bash
+find / [predicates for "is a directory named .git with rwx permissions for the current user] 2>/dev/null
+#+end_src
+
+Here "2>/dev/null" mean "I do not care about error messages" (we will understand this better when we study file descriptors and how they relate to redirection). What happens if you get rid of the "2>dev/null" ending?
+
+Note that there are many possible predicate combinations. Some might seem close to a correct solution, but not be totally correct. My solution uses 5 predicates.
+
+# Instead an overcomplex solution uses two times backquotes and combine several many predicates using # "-and", "-or" and forcing precedence with "( )".
+# Sketch of an overcomplex solution...
+# find / -type d -name .git \( -user `whoami` -perm u+x -or -group `id -g` -perm g+x... \) 2>/dev/null | xargs -I {} find {} -maxdepth 1 -name config | xargs grep url
+
+**** List the urls for the remotes of the git repositories
+
+Once you have the list of all the git repositories in the file system, we would be interested on listing the [[http://en.wikipedia.org/wiki/Uniform_resource_locator][urls]] (addresses) of their [[http://gitref.org/remotes/]["remotes"]] (for example, the central repository in the github datacenter in San Francisco). On each ".git" directory there is a text file called "config", which, non surprisingly, contains the configuration of that git repository. There we can [[http://www.gitguys.com/topics/the-configuration-file-remote-section/][find the remotes]]. They look like this:
+
+#+begin_src
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+[remote "origin"]
+  url = git@github.com:strawlab/carpentry.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+  push = HEAD
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+#+end_src
+
+Your task is to, using several commands with pipes, list the path to the git repository besides the url of its remotes. My solution, which is not perfect but does the job, uses 3 commands on a pipe (it is possible to make it in two if you are [[http://stackoverflow.com/questions/16225270/exclude-directories-in-find-that-dont-contain-a-specific-filename][a real pro of find]]). I use xargs two times with a second find command and a third grep command. The output looks like this:
+
+#+begin_src
+...
+/home/santi/Proyectos/imp/software/ros-freeze/.git/config:	url = git@github.com:strawlab/ros-freeze.git
+/home/santi/Proyectos/imp/software/ros_flydra/.git/config:	url = git@github.com:strawlab/ros_flydra.git
+/home/santi/Proyectos/imp/software/py4science-vbc/.git/config:	url = git@github.com:strawlab/py4science-vbc.git
+...
+#+end_src
+
+We can use this list for many purposes. For example, check which git repositories are not updated with the remote...
+
+# find / -type d -name .git -readable -writable -executable -print0 2>/dev/null | xargs -0 -I {} find {} -maxdepth 1 -name config -print0 | xargs -0 grep url
 
 
 ** Example project: Bash history tweaking
