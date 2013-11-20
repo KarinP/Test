@@ -3,10 +3,16 @@
 
 * Managing Change: Version Control with *git*
 
+- [[http://arokem.github.io/2013-09-16-ISI/lessons/git-notebook/git-for-scientists.slides.html#/][A cool presentation]]
+- [[http://ndpsoftware.com/git-cheatsheet.html][Cool visualisation of the "5 git areas]]
+- [[http://git.661346.n2.nabble.com/Git-terminology-remote-add-track-stage-etc-td5648599.html][Getting angry with the messed up git jargon]]
+- [[http://git.661346.n2.nabble.com/Git-terminology-remote-add-track-stage-etc-td5648599.html][Git ready]]
+
 ** A gentle introduction to git
 *** Why do we need version control?
 **** Managing change
 **** Not only for collaboration
+**** A motivational paper: http://www.scfbm.org/content/8/1/7
 *** Git
 *** There is no magic: git command (*git*)
 *** There is no magic: git repository (*.git*)
