@@ -281,6 +281,37 @@ We can use this list for many purposes. For example, check which git repositorie
 
 # find / -type d -name .git -readable -writable -executable -print0 2>/dev/null | xargs -0 -I {} find {} -maxdepth 1 -name config -print0 | xargs -0 grep url
 
+** Environment variables
+*** V1 Understanding how variables are passed to child processes
+
+During class we have seen several examples of tweaking the environment (that is, change the values of [[http://en.wikipedia.org/wiki/Environment_variable][environment variables]] in the current shell process). We have also seen that child processes inherit the environment variables of their parents. But until now, we haven't given precise rules on how does this happen. When no precise rules are given of how a computer program behaves, we are prone to misunderstand it.
+
+So let's fully understand how and why environment variables are exported to child processes, practicing some commands on the way.
+
+Each and every process in the system have associated a collection of environment variables. Environment variables are therefore not a feature of the shell, but of the operating system. The shell just makes it easier to manipulate its environment. But the shell is just a regular process and it needs to play by the rules dictated by the operating system. In particular, these two rules apply:
+
+*Rule 1*- When spawn (initialized), a child process inherits the environment of its father.
+
+*Rule 2*- After a process starts running, no other process except itself can manipulate its environment.
+
+These rules are very important to keep a simple and sane model on how processes behave. In particular, rule 2 means that a process can rely on its environment variables without caring on uncontrolled changes. Not even its parent process can manipulate its variables. There are of course [[http://en.wikipedia.org/wiki/Fork_%28operating_system%29][hacky ways]] of circumventing rule 2, but they are probably useful in very limited contexts (like when debugging a program).
+
+As a side note, we will keep coming across similar notions of locality and protection of variables when we learn more about programming. These constraints are very important when creating programs which are easier to reason about.
+
+For example:
+#+begin_src bash
+PATH="" ls
+#+end_src
+
+There are several ways of [[http://psung.blogspot.co.at/2008/11/reading-environment-variables-of.html][reading other processes current environment variables]].
+
+
+**** Shell variables vs environment variables
+
+Not all the variables
+
+
+**** export
 
 ** Example project: Bash history tweaking
 
