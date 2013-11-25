@@ -114,7 +114,7 @@
 *** Writing scripts
 *** What is a loop?
 *** An infinite loop script
-#+begin_src bash
+#+begin_src sh
 #!/bin/bash
 while true                            # Forever...
 do
