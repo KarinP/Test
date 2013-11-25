@@ -294,17 +294,16 @@ Each and every process in the system have associated a collection of environment
 
 *Rule 2*- After a process starts running, no other process except itself can manipulate its environment.
 
-These rules are very important to keep a simple and sane model on how processes behave. In particular, rule 2 means that a process can rely on its environment variables without caring on uncontrolled changes. Not even its parent process can manipulate its variables. There are of course [[http://en.wikipedia.org/wiki/Fork_%28operating_system%29][hacky ways]] of circumventing rule 2, but they are probably useful in very limited contexts (like when debugging a program).
+These rules are very important to keep a simple model on how processes behave. In particular, rule 2 means that a process can rely on its environment variables without worrying about uncontrolled changes. Not even its parent process can manipulate its variables once it is running. There are of course [[http://en.wikipedia.org/wiki/Fork_%28operating_system%29][hacky ways]] of circumventing rule 2, but they are probably useful in very limited contexts (like when debugging a program).
 
-As a side note, we will keep coming across similar notions of locality and protection of variables when we learn more about programming. These constraints are very important when creating programs which are easier to reason about.
+As a side note, we will keep coming across similar notions of locality and protection of variables when we learn more about programming. These constraints are very important for creating programs which are easier to reason about.
 
 For example:
 #+begin_src bash
-PATH="" ls
+PATH="" LOG_NAME=closeau MY_VAR="This is $LOGNAME" ls
 #+end_src
 
 There are several ways of [[http://psung.blogspot.co.at/2008/11/reading-environment-variables-of.html][reading other processes current environment variables]].
-
 
 **** Shell variables vs environment variables
 
