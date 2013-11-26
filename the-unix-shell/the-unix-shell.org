@@ -1,119 +1,189 @@
+#+TITLE: Introduction to the Unix Shell
+
+* Headers                                                          :noexport:
+#+AUTHOR:
+#+EMAIL:
+
+
+* Org headers                                                      :noexport:
 #+STARTUP: indent
 #+STARTUP: showstars
+[[http://stackoverflow.com/questions/698562/disabling-underscore-to-subscript-in-emacs-org-mode-export][Disable super/subscripting]]
+#+OPTIONS: ^:nil
+#+OPTIONS: toc:1
+#+OPTIONS: num:nil
+#+OPTIONS: org-html-indent:nil
 
-* Introduction to Unix Shells
+* Org reveal headers                                               :noexport:
 
-** The unix shell and some commands
-
-*** Unix shell
-*** Bash shell
-*** Prompt
-*** Read-eval-print loop (REPL)
-*** Command line
-*** Command: *whoami*
-*** Command: *date*
-*** Command: *echo*
-*** Command: *bash*
-*** Command: *cat*
+reveal.js: http://lab.hakim.se/reveal-js/#/
+github: https://github.com/hakimel/reveal.js/
+example presentations: https://github.com/hakimel/reveal.js/wiki/Example-Presentations
 
 
-** Keeping track of executed commands
+org-reveal: https://github.com/yjwen/org-reveal
+example talk: http://naga-eda.org/home/yujie/org-reveal/#/
+source for the example talk http://naga-eda.org/home/yujie/org-reveal/index.org
 
-*** What have I done? *history*
-*** What have I done? *script*
-*** *script* output is messy: [[http://ascii-table.com/ansi-escape-sequences.php][control sequences]]
-*** Use the output of *script*: *scriptreplay*, *less -R*, *cat*
-*** What have I done? Up and Down arrows
-
-
-** The directory tree
-
-*** Directory (aka folder)
-*** Command: *cd*
-*** Tab-completion (Tab)
-*** File
-*** Directory tree (directory hierarchy)
-*** Slash ("/")
-*** Command: *ls*
-*** Working directory
-*** Command: *pwd*
-*** Path
-*** Absolute path
-*** Relative path
-*** Current directory (.)
-*** Parent directory (..)
-*** Home directory (~, $HOME)
-*** Root directory (/)
-*** Hidden files (.*)
-
-** Make, copy, move, delete commands
-
-*** Create a directory: *mkdir*
-*** Create a file: *touch*
-*** Create or edit a file: *nano*, *vim*
-*** Copy command: *cp*
-*** Move command: *mv*
-*** Remove empty directories: *rmdir*
-*** Remove files and directories: *rm*
+Where reveal is...
+#+REVEAL_ROOT: ../libs/reveal.js-2.5.0/
+Automatically split too long headings. Does this work?
+#+REVEAL: split
+Available themes can be found in “css/theme/” in the reveal.js directory.
+beige, default, moon, night, serif, simple, sky, solarized
+Also see: https://github.com/yjwen/org-reveal#extra-stylesheets
+#+REVEAL_THEME: night
+Available transitions are: default|cube|page|concave|zoom|linear|fade|none.
+#+REVEAL_TRANS: linear
+What goes to horizontal, what to vertical...
+#+REVEAL_HLEVEL: 1
 
 
-** More about commands
+** TODO Use mathjax when working
 
-*** Command syntax
-*** Command: *whereis*
-*** A command can be an executable file, a shell built-in, an alias or a function
-*** Environment variable: PATH
-*** Built-in command
-*** Command options
-*** Unix-style options
-*** GNU-style options
-*** Other types of options
-*** Seeking help (--help, *man*, *info*)
-*** Creating aliases: *alias*
+See: https://github.com/yjwen/org-reveal/issues/30
 
+https://github.com/yjwen/org-reveal#mathjax
++OPTIONS: reveal_mathjax:t
+# Optionally specify the path to mathjax
++REVEAL_MATH_JAX_URL: file:///usr/share/mathjax/
 
-** Redirection and pipelines
+** TODO Include org files is possible when exporting, use for carpentry
+http://orgmode.org/manual/Include-files.html
 
-*** Output redirection (>, >>)
-*** Pagers (*more*, *less*, *pg*)
-*** Creating pipelines ('|')
-*** Command: *head* and *tail*
+** TODO Set the transition speed with REVEAL_SPEED
+** TODO Source code blocks are not rendered with monospaced fonts
+** TODO Slides size
+https://github.com/yjwen/org-reveal#slide-size
 
+** TODO Preamble and post
+https://github.com/yjwen/org-reveal#preamble-and-postamble
 
-** Understanding better the command line
+** TODO Other options
+    reveal-control : Show/hide browsing control pad.
+    reveal-progress : Show/hide progress bar.
+    reveal-history : Enable/disable slide history track.
+    reveal-center : Enable/disable slide centering.
 
-*** What is my command? (*which*)
-*** What really is my command (*type*)
-*** Optional: *hash*
-*** What's going on with Dorothea's *cd*?
-*** Command line expansion
-*** globbing
-*** Glob patterns ("*", "?")
-*** Controlling expansion: quoting
-*** Single quotes vs double quotes
-*** Grave quotes ("`")
++OPTIONS: reveal-control:nil
++OPTIONS: reveal-progress:nil
++OPTIONS: reveal-history:nil
++OPTIONS: reveal-center:nil
 
 
-** File permissions
 
-*** Shells are just operating system wrappers
-*** Unix is multiuser
-*** File permissions: interpreting ls -l
-*** Who can do what: user, group and everybody
-*** Who can do what: read, write, execute
-*** Change file owner (*chown*)
-*** Change file group (*chgrp*)
-*** Change file permissions (*chmod*)
-*** The superuser (root and you)
-*** Command: *sudo*
-*** Change user account: *usermod*
+* The unix shell and some commands
+
+** Unix shell
+** Bash shell
+** Prompt
+** Read-eval-print loop (REPL)
+** Command line
+** Command: *whoami*
+** Command: *date*
+** Command: *echo*
+** Command: *bash*
+** Command: *cat*
 
 
-** Scripts sneak preview
-*** Scripts: automation, productivity, reproducibility
-*** Writing scripts
-*** What is a loop?
-*** An infinite loop script
+* Keeping track of executed commands
+
+** What have I done? *history*
+** What have I done? *script*
+** *script* output is messy: [[http://ascii-table.com/ansi-escape-sequences.php][control sequences]]
+** Use the output of *script*: *scriptreplay*, *less -R*, *cat*
+** What have I done? Up and Down arrows
+
+
+* The directory tree
+
+** Directory (aka folder)
+** Command: *cd*
+** Tab-completion (Tab)
+** File
+** Directory tree (directory hierarchy)
+** Slash ("/")
+** Command: *ls*
+** Working directory
+** Command: *pwd*
+** Path
+** Absolute path
+** Relative path
+** Current directory (.)
+** Parent directory (..)
+** Home directory (~, $HOME)
+** Root directory (/)
+** Hidden files (.*)
+
+
+* Make, copy, move, delete commands
+
+** Create a directory: *mkdir*
+** Create a file: *touch*
+** Create or edit a file: *nano*, *vim*
+** Copy command: *cp*
+** Move command: *mv*
+** Remove empty directories: *rmdir*
+** Remove files and directories: *rm*
+
+
+* More about commands
+
+** Command syntax
+** Command: *whereis*
+** A command can be an executable file, a shell built-in, an alias or a function
+** Environment variable: PATH
+** Built-in command
+** Command options
+** Unix-style options
+** GNU-style options
+** Other types of options
+** Seeking help (--help, *man*, *info*)
+** Creating aliases: *alias*
+
+
+* Redirection and pipelines
+
+** Output redirection (>, >>)
+** Pagers (*more*, *less*, *pg*)
+** Creating pipelines ('|')
+** Command: *head* and *tail*
+
+
+* Understanding better the command line
+
+** What is my command? (*which*)
+** What really is my command (*type*)
+** Optional: *hash*
+** What's going on with Dorothea's *cd*?
+** Command line expansion
+** globbing
+** Glob patterns ("*", "?")
+** Controlling expansion: quoting
+** Single quotes vs double quotes
+** Grave quotes ("`")
+
+
+* File permissions
+
+** Shells are just operating system wrappers
+** Unix is multiuser
+** File permissions: interpreting ls -l
+** Who can do what: user, group and everybody
+** Who can do what: read, write, execute
+** Change file owner (*chown*)
+** Change file group (*chgrp*)
+** Change file permissions (*chmod*)
+** The superuser (root and you)
+** Command: *sudo*
+** Change user account: *usermod*
+
+
+* Scripts sneak preview
+** Scripts: automation, productivity, reproducibility
+** Writing scripts
+** What is a loop?
+** An infinite loop script
 #+begin_src sh
 #!/bin/bash
 while true                            # Forever...
@@ -128,98 +198,101 @@ done
 #+end_src
 
 
-** Searching files and file contents
+* Searching files and file contents
 
-*** Recap: *which* *whereis*
-*** Command: *find*
-*** *find* does not use GNU-style options (no "--")
-*** *find* predicates
-*** Recursion
-*** Limiting recursion
-*** Doing things with the findings (-exec, *xargs*)
-*** Filtering / searching lines: *grep*
-*** Optional: regular expressions
-*** Optional: better non-standard tools: *grin* and *ag*
+** Recap: *which* *whereis*
+** Command: *find*
+** *find* does not use GNU-style options (no "--")
+** *find* predicates
+** Recursion
+** Limiting recursion
+** Doing things with the findings (-exec, *xargs*)
+** Filtering / searching lines: *grep*
+** Optional: regular expressions
+** Optional: better non-standard tools: *grin* and *ag*
 
 
-** Environment variables
+* Environment variables
 
-*** Passing information to processes
-*** Listing environment variables: *set* or *env*
-*** All environment variables are strings
-*** Variable lists (e.g. PATH) are separated by colon (:)
-*** Set variable value: VARIABLE_NAME=value
-*** Get variable value: $VARIABLE_NAME
-*** Variable scope (*export*)
-*** Variables are inherited from the parent process
-*** Sourcing scripts: *source* or *.*
-*** $EDITOR
-*** $PATH
-*** $CDPATH
-*** $PWD
-*** $LOGNAME
-*** $HOME
-*** $PYTHONPATH
-*** $GIT_COMMITTER_NAME
-*** ...
+** Passing information to processes
+** Listing environment variables: *set* or *env*
+** All environment variables are strings
+** Variable lists (e.g. PATH) are separated by colon (:)
+** Set variable value: VARIABLE_NAME=value
+** Get variable value: $VARIABLE_NAME
+** Variable scope (*export*)
+** Variables are inherited from the parent process
+** Sourcing scripts: *source* or *.*
+** $EDITOR
+** $PATH
+** $CDPATH
+** $PWD
+** $LOGNAME
+** $HOME
+** $PYTHONPATH
+** $GIT_COMMITTER_NAME
+** ...
 
-** Job control
 
-*** Processes
-*** Process status: *ps*
-*** Command: *pgrep*
-*** Command: *top*, *htop*, *glances*, *iotop*...
-*** The process id (PID)
-*** The process tree
-*** Parent process, child processes
-*** Why *cd* must be a builtin
-*** Command *pstree*
-*** Kill a process (*kill*, *pkill*)
-*** Pausing a process (C-z, Control-z, ^Z)
-*** Sending a process to the background (*bg*, "&" command line modifier)
-*** Background process id (%BID)
-*** Redirecting error (2>, 2>>, &>)
-*** Sending a process to the foreground (*fg*)
-*** Jobs (*jobs*)
-*** Dettaching a process (*nohup*, *disown*)
-*** Real-time streaming of a file: *tail -f*
-*** Experiment: highly concurrent file rewrite
+* Job control
 
-** Understanding better the file system
+** Processes
+** Process status: *ps*
+** Command: *pgrep*
+** Command: *top*, *htop*, *glances*, *iotop*...
+** The process id (PID)
+** The process tree
+** Parent process, child processes
+** Why *cd* must be a builtin
+** Command *pstree*
+** Kill a process (*kill*, *pkill*)
+** Pausing a process (C-z, Control-z, ^Z)
+** Sending a process to the background (*bg*, "&" command line modifier)
+** Background process id (%BID)
+** Redirecting error (2>, 2>>, &>)
+** Sending a process to the foreground (*fg*)
+** Jobs (*jobs*)
+** Dettaching a process (*nohup*, *disown*)
+** Real-time streaming of a file: *tail -f*
+** Experiment: highly concurrent file rewrite
 
-*** In unix everything is a file
-*** But what is a file?
-*** The truth about redirection
-*** File descriptors
-*** 2>&1
-*** When to use pipes, backquotes, xargs, exec in find?
+
+* Understanding better the file system
+
+** In unix everything is a file
+** But what is a file?
+** The truth about redirection
+** File descriptors
+** 2>&1
+** When to use pipes, backquotes, xargs, exec in find?
 - Use the need for xargs to ilustrate the difference between programs that read from stdin as opposed to programs that read their parameters from lists in the command line.
 - Show their man, programs reading from stdin usually wait or show [FILE] in their synopsis.
 - exec for stuff that runs once at a time
 - think of a good and clear example
-*** Devices (/dev)
-*** Mounting (*mount*)
-*** Mounting points
-*** Optional: /etc/fstab
-*** Links
-*** inodes
-*** Symbolic links (*ln -s*)
-*** The truth about *mv*
-*** Archive keeping permissions (*tar*)
-*** Compression (*gzip*)
-*** Archive and compress (*tar cz*)
-
-** Tweaking bash to increase productivity
-
-*** *bash* is a command, takes options
-*** *bash* *source* some files when booting-up
-*** login shell vs non-login shell
-*** interactive shell vs non-interactive shell
-*** The place to tweak things: ~/.bashrc
-*** Other sourced files: *~/.bash_profile*, *~/.profile*, */etc/profile*...
-*** Tweaking PATH
-*** Tweaking CDPATH
-*** Creating aliases
+** Devices (/dev)
+** Mounting (*mount*)
+** Mounting points
+** Optional: /etc/fstab
+** Links
+** inodes
+** Symbolic links (*ln -s*)
+** The truth about *mv*
+** Archive keeping permissions (*tar*)
+** Compression (*gzip*)
+** Archive and compress (*tar cz*)
 
 
-** Using computers remotely: *ssh*
+* Tweaking bash to increase productivity
+
+** *bash* is a command, takes options
+** *bash* *source* some files when booting-up
+** login shell vs non-login shell
+** interactive shell vs non-interactive shell
+** The place to tweak things: ~/.bashrc
+** Other sourced files: *~/.bash_profile*, *~/.profile*, */etc/profile*...
+** Tweaking PATH
+** Tweaking CDPATH
+** Creating aliases
+
+
+* Using computers remotely: *ssh*

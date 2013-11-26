@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>(Introduction to the Unix Shell)</title>
+<link rel="stylesheet" href="../libs/reveal.js-2.5.0/css/reveal.min.css"/>
+<link rel="stylesheet" href="../libs/reveal.js-2.5.0/css/theme/night.css" id="theme"/>
+
+<link rel="stylesheet" href="../libs/reveal.js-2.5.0/css/print/pdf.css" type="text/css" media="print"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>Introduction to the Unix Shell</h1>
+<h2></h2>
+<h2><a href="mailto:"></a></h2>
+<h2></h2></section>
+<section>
+<h2>Table of Contents</h2><ul>
+<li>
+<a href="#sec-1">The unix shell and some commands</a>
+</li>
+<li>
+<a href="#sec-2">Keeping track of executed commands</a>
+</li>
+<li>
+<a href="#sec-3">The directory tree</a>
+</li>
+<li>
+<a href="#sec-4">Make, copy, move, delete commands</a>
+</li>
+<li>
+<a href="#sec-5">More about commands</a>
+</li>
+<li>
+<a href="#sec-6">Redirection and pipelines</a>
+</li>
+<li>
+<a href="#sec-7">Understanding better the command line</a>
+</li>
+<li>
+<a href="#sec-8">File permissions</a>
+</li>
+<li>
+<a href="#sec-9">Scripts sneak preview</a>
+</li>
+<li>
+<a href="#sec-10">Searching files and file contents</a>
+</li>
+<li>
+<a href="#sec-11">Environment variables</a>
+</li>
+<li>
+<a href="#sec-12">Job control</a>
+</li>
+<li>
+<a href="#sec-13">Understanding better the file system</a>
+</li>
+<li>
+<a href="#sec-14">Tweaking bash to increase productivity</a>
+</li>
+<li>
+<a href="#sec-15">Using computers remotely: <b>ssh</b></a>
+</li>
+</ul>
+</section>
+
+<section>
+<section id="sec-1" >
+
+<h2>The unix shell and some commands</h2>
+</section>
+<section id="sec-1-1" >
+
+<h3>Unix shell</h3>
+</section>
+<section id="sec-1-2" >
+
+<h3>Bash shell</h3>
+</section>
+<section id="sec-1-3" >
+
+<h3>Prompt</h3>
+</section>
+<section id="sec-1-4" >
+
+<h3>Read-eval-print loop (REPL)</h3>
+</section>
+<section id="sec-1-5" >
+
+<h3>Command line</h3>
+</section>
+<section id="sec-1-6" >
+
+<h3>Command: <b>whoami</b></h3>
+</section>
+<section id="sec-1-7" >
+
+<h3>Command: <b>date</b></h3>
+</section>
+<section id="sec-1-8" >
+
+<h3>Command: <b>echo</b></h3>
+</section>
+<section id="sec-1-9" >
+
+<h3>Command: <b>bash</b></h3>
+</section>
+<section id="sec-1-10" >
+
+<h3>Command: <b>cat</b></h3>
+</section>
+
+</section>
+<section>
+<section id="sec-2" >
+
+<h2>Keeping track of executed commands</h2>
+</section>
+<section id="sec-2-1" >
+
+<h3>What have I done? <b>history</b></h3>
+</section>
+<section id="sec-2-2" >
+
+<h3>What have I done? <b>script</b></h3>
+</section>
+<section id="sec-2-3" >
+
+<h3><b>script</b> output is messy: <a href="http://ascii-table.com/ansi-escape-sequences.php">control sequences</a></h3>
+</section>
+<section id="sec-2-4" >
+
+<h3>Use the output of <b>script</b>: <b>scriptreplay</b>, <b>less -R</b>, <b>cat</b></h3>
+</section>
+<section id="sec-2-5" >
+
+<h3>What have I done? Up and Down arrows</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>The directory tree</h2>
+</section>
+<section id="sec-3-1" >
+
+<h3>Directory (aka folder)</h3>
+</section>
+<section id="sec-3-2" >
+
+<h3>Command: <b>cd</b></h3>
+</section>
+<section id="sec-3-3" >
+
+<h3>Tab-completion (Tab)</h3>
+</section>
+<section id="sec-3-4" >
+
+<h3>File</h3>
+</section>
+<section id="sec-3-5" >
+
+<h3>Directory tree (directory hierarchy)</h3>
+</section>
+<section id="sec-3-6" >
+
+<h3>Slash ("/")</h3>
+</section>
+<section id="sec-3-7" >
+
+<h3>Command: <b>ls</b></h3>
+</section>
+<section id="sec-3-8" >
+
+<h3>Working directory</h3>
+</section>
+<section id="sec-3-9" >
+
+<h3>Command: <b>pwd</b></h3>
+</section>
+<section id="sec-3-10" >
+
+<h3>Path</h3>
+</section>
+<section id="sec-3-11" >
+
+<h3>Absolute path</h3>
+</section>
+<section id="sec-3-12" >
+
+<h3>Relative path</h3>
+</section>
+<section id="sec-3-13" >
+
+<h3>Current directory (.)</h3>
+</section>
+<section id="sec-3-14" >
+
+<h3>Parent directory (..)</h3>
+</section>
+<section id="sec-3-15" >
+
+<h3>Home directory (~, $HOME)</h3>
+</section>
+<section id="sec-3-16" >
+
+<h3>Root directory (/)</h3>
+</section>
+<section id="sec-3-17" >
+
+<h3>Hidden files (.*)</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-4" >
+
+<h2>Make, copy, move, delete commands</h2>
+</section>
+<section id="sec-4-1" >
+
+<h3>Create a directory: <b>mkdir</b></h3>
+</section>
+<section id="sec-4-2" >
+
+<h3>Create a file: <b>touch</b></h3>
+</section>
+<section id="sec-4-3" >
+
+<h3>Create or edit a file: <b>nano</b>, <b>vim</b></h3>
+</section>
+<section id="sec-4-4" >
+
+<h3>Copy command: <b>cp</b></h3>
+</section>
+<section id="sec-4-5" >
+
+<h3>Move command: <b>mv</b></h3>
+</section>
+<section id="sec-4-6" >
+
+<h3>Remove empty directories: <b>rmdir</b></h3>
+</section>
+<section id="sec-4-7" >
+
+<h3>Remove files and directories: <b>rm</b></h3>
+</section>
+
+</section>
+<section>
+<section id="sec-5" >
+
+<h2>More about commands</h2>
+</section>
+<section id="sec-5-1" >
+
+<h3>Command syntax</h3>
+</section>
+<section id="sec-5-2" >
+
+<h3>Command: <b>whereis</b></h3>
+</section>
+<section id="sec-5-3" >
+
+<h3>A command can be an executable file, a shell built-in, an alias or a function</h3>
+</section>
+<section id="sec-5-4" >
+
+<h3>Environment variable: PATH</h3>
+</section>
+<section id="sec-5-5" >
+
+<h3>Built-in command</h3>
+</section>
+<section id="sec-5-6" >
+
+<h3>Command options</h3>
+</section>
+<section id="sec-5-7" >
+
+<h3>Unix-style options</h3>
+</section>
+<section id="sec-5-8" >
+
+<h3>GNU-style options</h3>
+</section>
+<section id="sec-5-9" >
+
+<h3>Other types of options</h3>
+</section>
+<section id="sec-5-10" >
+
+<h3>Seeking help (&#x2013;help, <b>man</b>, <b>info</b>)</h3>
+</section>
+<section id="sec-5-11" >
+
+<h3>Creating aliases: <b>alias</b></h3>
+</section>
+
+</section>
+<section>
+<section id="sec-6" >
+
+<h2>Redirection and pipelines</h2>
+</section>
+<section id="sec-6-1" >
+
+<h3>Output redirection (&gt;, &gt;&gt;)</h3>
+</section>
+<section id="sec-6-2" >
+
+<h3>Pagers (<b>more</b>, <b>less</b>, <b>pg</b>)</h3>
+</section>
+<section id="sec-6-3" >
+
+<h3>Creating pipelines ('|')</h3>
+</section>
+<section id="sec-6-4" >
+
+<h3>Command: <b>head</b> and <b>tail</b></h3>
+</section>
+
+</section>
+<section>
+<section id="sec-7" >
+
+<h2>Understanding better the command line</h2>
+</section>
+<section id="sec-7-1" >
+
+<h3>What is my command? (<b>which</b>)</h3>
+</section>
+<section id="sec-7-2" >
+
+<h3>What really is my command (<b>type</b>)</h3>
+</section>
+<section id="sec-7-3" >
+
+<h3>Optional: <b>hash</b></h3>
+</section>
+<section id="sec-7-4" >
+
+<h3>What's going on with Dorothea's <b>cd</b>?</h3>
+</section>
+<section id="sec-7-5" >
+
+<h3>Command line expansion</h3>
+</section>
+<section id="sec-7-6" >
+
+<h3>globbing</h3>
+</section>
+<section id="sec-7-7" >
+
+<h3>Glob patterns ("*", "?")</h3>
+</section>
+<section id="sec-7-8" >
+
+<h3>Controlling expansion: quoting</h3>
+</section>
+<section id="sec-7-9" >
+
+<h3>Single quotes vs double quotes</h3>
+</section>
+<section id="sec-7-10" >
+
+<h3>Grave quotes ("`")</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-8" >
+
+<h2>File permissions</h2>
+</section>
+<section id="sec-8-1" >
+
+<h3>Shells are just operating system wrappers</h3>
+</section>
+<section id="sec-8-2" >
+
+<h3>Unix is multiuser</h3>
+</section>
+<section id="sec-8-3" >
+
+<h3>File permissions: interpreting ls -l</h3>
+</section>
+<section id="sec-8-4" >
+
+<h3>Who can do what: user, group and everybody</h3>
+</section>
+<section id="sec-8-5" >
+
+<h3>Who can do what: read, write, execute</h3>
+</section>
+<section id="sec-8-6" >
+
+<h3>Change file owner (<b>chown</b>)</h3>
+</section>
+<section id="sec-8-7" >
+
+<h3>Change file group (<b>chgrp</b>)</h3>
+</section>
+<section id="sec-8-8" >
+
+<h3>Change file permissions (<b>chmod</b>)</h3>
+</section>
+<section id="sec-8-9" >
+
+<h3>The superuser (root and you)</h3>
+</section>
+<section id="sec-8-10" >
+
+<h3>Command: <b>sudo</b></h3>
+</section>
+<section id="sec-8-11" >
+
+<h3>Change user account: <b>usermod</b></h3>
+</section>
+
+</section>
+<section>
+<section id="sec-9" >
+
+<h2>Scripts sneak preview</h2>
+</section>
+<section id="sec-9-1" >
+
+<h3>Scripts: automation, productivity, reproducibility</h3>
+</section>
+<section id="sec-9-2" >
+
+<h3>Writing scripts</h3>
+</section>
+<section id="sec-9-3" >
+
+<h3>What is a loop?</h3>
+</section>
+<section id="sec-9-4" >
+
+<h3>An infinite loop script</h3>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #ff7f24;">#</span><span style="color: #ff7f24;">!/bin/</span><span style="color: #00ffff;">bash</span>
+<span style="color: #00ffff;">while</span> true                            <span style="color: #ff7f24;"># </span><span style="color: #ff7f24;">Forever...</span>
+<span style="color: #00ffff;">do</span>
+    <span style="color: #b0c4de;">echo</span> <span style="color: #ffa07a;">"My Process ID (PID) is $$"</span>  <span style="color: #ff7f24;"># </span><span style="color: #ff7f24;">Show the current process id</span>
+    <span style="color: #b0c4de;">echo</span> <span style="color: #ffa07a;">"And now we are at"</span> <span style="color: #fa8072;">`date`</span>   <span style="color: #ff7f24;"># </span><span style="color: #ff7f24;">Show the time and date</span>
+    <span style="color: #b0c4de;">echo</span> <span style="color: #ffa07a;">"Press [CTRL+C] to stop"</span>     <span style="color: #ff7f24;"># </span><span style="color: #ff7f24;">Show some help</span>
+    <span style="color: #b0c4de;">echo</span> <span style="color: #ffa07a;">"Press [CTRL+Z] to pause"</span>    <span style="color: #ff7f24;"># </span><span style="color: #ff7f24;">Show more help</span>
+    <span style="color: #b0c4de;">echo</span> <span style="color: #ffa07a;">"---------------------------------------------------------"</span>
+    sleep 1                           <span style="color: #ff7f24;"># </span><span style="color: #ff7f24;">Sleep 1 second</span>
+<span style="color: #00ffff;">done</span>
+</pre>
+</div>
+</section>
+
+</section>
+<section>
+<section id="sec-10" >
+
+<h2>Searching files and file contents</h2>
+</section>
+<section id="sec-10-1" >
+
+<h3>Recap: <b>which</b> <b>whereis</b></h3>
+</section>
+<section id="sec-10-2" >
+
+<h3>Command: <b>find</b></h3>
+</section>
+<section id="sec-10-3" >
+
+<h3><b>find</b> does not use GNU-style options (no "&#x2013;")</h3>
+</section>
+<section id="sec-10-4" >
+
+<h3><b>find</b> predicates</h3>
+</section>
+<section id="sec-10-5" >
+
+<h3>Recursion</h3>
+</section>
+<section id="sec-10-6" >
+
+<h3>Limiting recursion</h3>
+</section>
+<section id="sec-10-7" >
+
+<h3>Doing things with the findings (-exec, <b>xargs</b>)</h3>
+</section>
+<section id="sec-10-8" >
+
+<h3>Filtering / searching lines: <b>grep</b></h3>
+</section>
+<section id="sec-10-9" >
+
+<h3>Optional: regular expressions</h3>
+</section>
+<section id="sec-10-10" >
+
+<h3>Optional: better non-standard tools: <b>grin</b> and <b>ag</b></h3>
+</section>
+
+</section>
+<section>
+<section id="sec-11" >
+
+<h2>Environment variables</h2>
+</section>
+<section id="sec-11-1" >
+
+<h3>Passing information to processes</h3>
+</section>
+<section id="sec-11-2" >
+
+<h3>Listing environment variables: <b>set</b> or <b>env</b></h3>
+</section>
+<section id="sec-11-3" >
+
+<h3>All environment variables are strings</h3>
+</section>
+<section id="sec-11-4" >
+
+<h3>Variable lists (e.g. PATH) are separated by colon (:)</h3>
+</section>
+<section id="sec-11-5" >
+
+<h3>Set variable value: VARIABLE_NAME=value</h3>
+</section>
+<section id="sec-11-6" >
+
+<h3>Get variable value: $VARIABLE_NAME</h3>
+</section>
+<section id="sec-11-7" >
+
+<h3>Variable scope (<b>export</b>)</h3>
+</section>
+<section id="sec-11-8" >
+
+<h3>Variables are inherited from the parent process</h3>
+</section>
+<section id="sec-11-9" >
+
+<h3>Sourcing scripts: <b>source</b> or <b>.</b></h3>
+</section>
+<section id="sec-11-10" >
+
+<h3>$EDITOR</h3>
+</section>
+<section id="sec-11-11" >
+
+<h3>$PATH</h3>
+</section>
+<section id="sec-11-12" >
+
+<h3>$CDPATH</h3>
+</section>
+<section id="sec-11-13" >
+
+<h3>$PWD</h3>
+</section>
+<section id="sec-11-14" >
+
+<h3>$LOGNAME</h3>
+</section>
+<section id="sec-11-15" >
+
+<h3>$HOME</h3>
+</section>
+<section id="sec-11-16" >
+
+<h3>$PYTHONPATH</h3>
+</section>
+<section id="sec-11-17" >
+
+<h3>$GIT_COMMITTER_NAME</h3>
+</section>
+<section id="sec-11-18" >
+
+<h3>&#x2026;</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-12" >
+
+<h2>Job control</h2>
+</section>
+<section id="sec-12-1" >
+
+<h3>Processes</h3>
+</section>
+<section id="sec-12-2" >
+
+<h3>Process status: <b>ps</b></h3>
+</section>
+<section id="sec-12-3" >
+
+<h3>Command: <b>pgrep</b></h3>
+</section>
+<section id="sec-12-4" >
+
+<h3>Command: <b>top</b>, <b>htop</b>, <b>glances</b>, <b>iotop</b>&#x2026;</h3>
+</section>
+<section id="sec-12-5" >
+
+<h3>The process id (PID)</h3>
+</section>
+<section id="sec-12-6" >
+
+<h3>The process tree</h3>
+</section>
+<section id="sec-12-7" >
+
+<h3>Parent process, child processes</h3>
+</section>
+<section id="sec-12-8" >
+
+<h3>Why <b>cd</b> must be a builtin</h3>
+</section>
+<section id="sec-12-9" >
+
+<h3>Command <b>pstree</b></h3>
+</section>
+<section id="sec-12-10" >
+
+<h3>Kill a process (<b>kill</b>, <b>pkill</b>)</h3>
+</section>
+<section id="sec-12-11" >
+
+<h3>Pausing a process (C-z, Control-z, ^Z)</h3>
+</section>
+<section id="sec-12-12" >
+
+<h3>Sending a process to the background (<b>bg</b>, "&amp;" command line modifier)</h3>
+</section>
+<section id="sec-12-13" >
+
+<h3>Background process id (%BID)</h3>
+</section>
+<section id="sec-12-14" >
+
+<h3>Redirecting error (2&gt;, 2&gt;&gt;, &amp;&gt;)</h3>
+</section>
+<section id="sec-12-15" >
+
+<h3>Sending a process to the foreground (<b>fg</b>)</h3>
+</section>
+<section id="sec-12-16" >
+
+<h3>Jobs (<b>jobs</b>)</h3>
+</section>
+<section id="sec-12-17" >
+
+<h3>Dettaching a process (<b>nohup</b>, <b>disown</b>)</h3>
+</section>
+<section id="sec-12-18" >
+
+<h3>Real-time streaming of a file: <b>tail -f</b></h3>
+</section>
+<section id="sec-12-19" >
+
+<h3>Experiment: highly concurrent file rewrite</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-13" >
+
+<h2>Understanding better the file system</h2>
+</section>
+<section id="sec-13-1" >
+
+<h3>In unix everything is a file</h3>
+</section>
+<section id="sec-13-2" >
+
+<h3>But what is a file?</h3>
+</section>
+<section id="sec-13-3" >
+
+<h3>The truth about redirection</h3>
+</section>
+<section id="sec-13-4" >
+
+<h3>File descriptors</h3>
+</section>
+<section id="sec-13-5" >
+
+<h3>2&gt;&amp;1</h3>
+</section>
+<section id="sec-13-6" >
+
+<h3>When to use pipes, backquotes, xargs, exec in find?</h3>
+<ul class="org-ul">
+<li>Use the need for xargs to ilustrate the difference between programs that read from stdin as opposed to programs that read their parameters from lists in the command line.
+</li>
+<li>Show their man, programs reading from stdin usually wait or show [FILE] in their synopsis.
+</li>
+<li>exec for stuff that runs once at a time
+</li>
+<li>think of a good and clear example
+</li>
+</ul>
+
+</section>
+<section id="sec-13-7" >
+
+<h3>Devices (/dev)</h3>
+</section>
+<section id="sec-13-8" >
+
+<h3>Mounting (<b>mount</b>)</h3>
+</section>
+<section id="sec-13-9" >
+
+<h3>Mounting points</h3>
+</section>
+<section id="sec-13-10" >
+
+<h3>Optional: /etc/fstab</h3>
+</section>
+<section id="sec-13-11" >
+
+<h3>Links</h3>
+</section>
+<section id="sec-13-12" >
+
+<h3>inodes</h3>
+</section>
+<section id="sec-13-13" >
+
+<h3>Symbolic links (<b>ln -s</b>)</h3>
+</section>
+<section id="sec-13-14" >
+
+<h3>The truth about <b>mv</b></h3>
+</section>
+<section id="sec-13-15" >
+
+<h3>Archive keeping permissions (<b>tar</b>)</h3>
+</section>
+<section id="sec-13-16" >
+
+<h3>Compression (<b>gzip</b>)</h3>
+</section>
+<section id="sec-13-17" >
+
+<h3>Archive and compress (<b>tar cz</b>)</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-14" >
+
+<h2>Tweaking bash to increase productivity</h2>
+</section>
+<section id="sec-14-1" >
+
+<h3><b>bash</b> is a command, takes options</h3>
+</section>
+<section id="sec-14-2" >
+
+<h3><b>bash</b> <b>source</b> some files when booting-up</h3>
+</section>
+<section id="sec-14-3" >
+
+<h3>login shell vs non-login shell</h3>
+</section>
+<section id="sec-14-4" >
+
+<h3>interactive shell vs non-interactive shell</h3>
+</section>
+<section id="sec-14-5" >
+
+<h3>The place to tweak things: ~/.bashrc</h3>
+</section>
+<section id="sec-14-6" >
+
+<h3>Other sourced files: <b>~/.bash_profile</b>, <b>~/.profile</b>, <b>/etc/profile</b>&#x2026;</h3>
+</section>
+<section id="sec-14-7" >
+
+<h3>Tweaking PATH</h3>
+</section>
+<section id="sec-14-8" >
+
+<h3>Tweaking CDPATH</h3>
+</section>
+<section id="sec-14-9" >
+
+<h3>Creating aliases</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-15" >
+
+<h2>Using computers remotely: <b>ssh</b></h2>
+</section>
+</section>
+</div>
+</div>
+<script src="../libs/reveal.js-2.5.0/lib/js/head.min.js"></script>
+<script src="../libs/reveal.js-2.5.0/js/reveal.min.js"></script>
+<script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              rollingLinks: true,
+              keyboard: true,
+              overview: true,
+               // slide width
+               // slide height
+               // slide margin
+               // slide minimum scaling factor
+               // slide maximum scaling factor
+
+
+              theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+              transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+              transitionSpeed: 'default',
+
+              // Optional libraries used to extend on reveal.js
+              dependencies: [
+                { src: '../libs/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: '../libs/reveal.js-2.5.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: '../libs/reveal.js-2.5.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+              ]
+            });
+</script>
+</body>
+</html>
