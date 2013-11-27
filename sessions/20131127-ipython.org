@@ -1,12 +1,125 @@
+#+TITLE: Carpentry 2013/11/27
+* Headers                                                          :noexport:
+#+AUTHOR:
+#+EMAIL:
+
+* Org headers                                                      :noexport:
 #+STARTUP: indent
 #+STARTUP: showstars
+[[http://stackoverflow.com/questions/698562/disabling-underscore-to-subscript-in-emacs-org-mode-export][Disable super/subscripting]]
+#+OPTIONS: ^:nil
+#+OPTIONS: toc:1
+#+OPTIONS: num:nil
+#+OPTIONS: org-html-indent:nil
 
-* 2013/11/27
+* Org reveal headers                                               :noexport:
 
-** Q&A
+reveal.js: http://lab.hakim.se/reveal-js/#/
+github: https://github.com/hakimel/reveal.js/
+example presentations: https://github.com/hakimel/reveal.js/wiki/Example-Presentations
 
-** Git
 
-** ipython
+org-reveal: https://github.com/yjwen/org-reveal
+example talk: http://naga-eda.org/home/yujie/org-reveal/#/
+source for the example talk http://naga-eda.org/home/yujie/org-reveal/index.org
 
-** Environment variables torture
+Where reveal is...
+#+REVEAL_ROOT: ../libs/reveal.js-2.5.0/
+Automatically split too long headings. Does this work?
+#+REVEAL: split
+Available themes can be found in “css/theme/” in the reveal.js directory.
+beige, default, moon, night, serif, simple, sky, solarized
+Also see: https://github.com/yjwen/org-reveal#extra-stylesheets
+#+REVEAL_THEME: night
+Available transitions are: default|cube|page|concave|zoom|linear|fade|none.
+#+REVEAL_TRANS: linear
+What goes to horizontal, what to vertical...
+#+REVEAL_HLEVEL: 1
+
+
+** TODO Use mathjax when working
+
+See: https://github.com/yjwen/org-reveal/issues/30
+
+https://github.com/yjwen/org-reveal#mathjax
++OPTIONS: reveal_mathjax:t
+# Optionally specify the path to mathjax
++REVEAL_MATH_JAX_URL: file:///usr/share/mathjax/
+
+** TODO Include org files is possible when exporting, use for carpentry
+http://orgmode.org/manual/Include-files.html
+
+** TODO Set the transition speed with REVEAL_SPEED
+** TODO Source code blocks are not rendered with monospaced fonts
+** TODO Slides size
+https://github.com/yjwen/org-reveal#slide-size
+
+** TODO Preamble and post
+https://github.com/yjwen/org-reveal#preamble-and-postamble
+
+** TODO Other options
+    reveal-control : Show/hide browsing control pad.
+    reveal-progress : Show/hide progress bar.
+    reveal-history : Enable/disable slide history track.
+    reveal-center : Enable/disable slide centering.
+
++OPTIONS: reveal-control:nil
++OPTIONS: reveal-progress:nil
++OPTIONS: reveal-history:nil
++OPTIONS: reveal-center:nil
+
+
+* Q&A
+
+* Git
+
+** Getting started
+
+- [[http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup][First time git setup]]: global user name, global email, editor, colors!
+
+#+begin_src sh
+git config --global user.name "John Doe"
+git config --global user.email "john.doe@doe.com"
+git config --global color.ui "auto"
+#+end_src
+
+
+** Environment variables have the highest precedence
+#+begin_src sh
+export GIT_AUTHOR_NAME="Christian Weiske"
+export GIT_AUTHOR_EMAIL=foo@example.org
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+#+end_src
+
+
+** What is in your gitconfig?
+http://www.reddit.com/r/git/comments/1igxw9/whats_in_your_gitconig/
+
+
+** Good practices
+*** The key to not getting into trouble: being systematic
+*** Before committing, fetch!
+*** Only do pull --ff-only - create an alias
+[[https://www.atlassian.com/git/tutorial/git-branches#!merge][A good explanation of fast-forward]]
+*** For the time being, if --ff-only fails, contact us
+*** Do not make anonymous commits
+*** Use your own branch - but still you might want to merge with our changes
+
+
+** Informal exercise
+Let's do our first commit of the commands-list
+- First pull (ff-only)
+- Check the status (git status)
+- Add your changes and commit
+- Let's get into bussiness: push
+
+* ipython
+** Short hads-on discussion
+- Choose your python shell
+- Choose your editor
+- Some wandering around with python
+- ipython magics and ipython-shell integration
+
+
+* Environment variables torture

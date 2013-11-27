@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>(Carpentry 2013/11/27)</title>
+<link rel="stylesheet" href="../libs/reveal.js-2.5.0/css/reveal.min.css"/>
+<link rel="stylesheet" href="../libs/reveal.js-2.5.0/css/theme/night.css" id="theme"/>
+
+<link rel="stylesheet" href="../libs/reveal.js-2.5.0/css/print/pdf.css" type="text/css" media="print"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>Carpentry 2013/11/27</h1>
+<h2></h2>
+<h2><a href="mailto:"></a></h2>
+<h2></h2></section>
+<section>
+<h2>Table of Contents</h2><ul>
+<li>
+<a href="#sec-1">Q&amp;A</a>
+</li>
+<li>
+<a href="#sec-2">Git</a>
+</li>
+<li>
+<a href="#sec-3">ipython</a>
+</li>
+<li>
+<a href="#sec-4">Environment variables torture</a>
+</li>
+</ul>
+</section>
+<section>
+<section id="sec-1" >
+
+<h2>Q&amp;A</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-2" >
+
+<h2>Git</h2>
+</section>
+<section id="sec-2-1" >
+
+<h3>Getting started</h3>
+<ul class="org-ul">
+<li><a href="http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup">First time git setup</a>: global user name, global email, editor, colors!
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git config --global user.name <span style="color: #ffa07a;">"John Doe"</span>
+git config --global user.email <span style="color: #ffa07a;">"john.doe@doe.com"</span>
+git config --global color.ui <span style="color: #ffa07a;">"auto"</span>
+</pre>
+</div>
+
+</section>
+<section id="sec-2-2" >
+
+<h3>Environment variables have the highest precedence</h3>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">GIT_AUTHOR_NAME</span>=<span style="color: #ffa07a;">"Christian Weiske"</span>
+<span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">GIT_AUTHOR_EMAIL</span>=foo@example.org
+<span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">GIT_COMMITTER_NAME</span>=<span style="color: #ffa07a;">"$GIT_AUTHOR_NAME"</span>
+<span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">GIT_COMMITTER_EMAIL</span>=<span style="color: #ffa07a;">"$GIT_AUTHOR_EMAIL"</span>
+</pre>
+</div>
+
+</section>
+<section id="sec-2-3" >
+
+<h3>What is in your gitconfig?</h3>
+<p>
+<a href="http://www.reddit.com/r/git/comments/1igxw9/whats_in_your_gitconig/">http://www.reddit.com/r/git/comments/1igxw9/whats_in_your_gitconig/</a>
+</p>
+
+</section>
+<section id="sec-2-4" >
+
+<h3>Good practices</h3>
+</section>
+<section id="sec-2-4-1" >
+
+<h4>The key to not getting into trouble: being systematic</h4>
+</section>
+<section id="sec-2-4-2" >
+
+<h4>Before committing, fetch!</h4>
+</section>
+<section id="sec-2-4-3" >
+
+<h4>Only do pull &#x2013;ff-only - create an alias</h4>
+<p>
+<a href="https://www.atlassian.com/git/tutorial/git-branches#!merge">A good explanation of fast-forward</a>
+</p>
+
+</section>
+<section id="sec-2-4-4" >
+
+<h4>For the time being, if &#x2013;ff-only fails, contact us</h4>
+</section>
+<section id="sec-2-4-5" >
+
+<h4>Do not make anonymous commits</h4>
+</section>
+<section id="sec-2-4-6" >
+
+<h4>Use your own branch - but still you might want to merge with our changes</h4>
+
+</section>
+<section id="sec-2-5" >
+
+<h3>Informal exercise</h3>
+<p>
+Let's do our first commit of the commands-list
+</p>
+<ul class="org-ul">
+<li>First pull (ff-only)
+</li>
+<li>Check the status (git status)
+</li>
+<li>Add your changes and commit
+</li>
+<li>Let's get into bussiness: push
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>ipython</h2>
+</section>
+<section id="sec-3-1" >
+
+<h3>Short hads-on discussion</h3>
+<ul class="org-ul">
+<li>Choose your python shell
+</li>
+<li>Choose your editor
+</li>
+<li>Some wandering around with python
+</li>
+<li>ipython magics and ipython-shell integration
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-4" >
+
+<h2>Environment variables torture</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="../libs/reveal.js-2.5.0/lib/js/head.min.js"></script>
+<script src="../libs/reveal.js-2.5.0/js/reveal.min.js"></script>
+<script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: false,
+              center: true,
+              rollingLinks: false,
+              keyboard: true,
+              overview: true,
+               // slide width
+               // slide height
+               // slide margin
+               // slide minimum scaling factor
+               // slide maximum scaling factor
+
+
+              theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+              transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+              transitionSpeed: 'default',
+
+              // Optional libraries used to extend on reveal.js
+              dependencies: [
+                { src: '../libs/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+                ,{ src: '../libs/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: '../libs/reveal.js-2.5.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: '../libs/reveal.js-2.5.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+              ]
+            });
+</script>
+</body>
+</html>
