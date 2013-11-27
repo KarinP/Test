@@ -1,0 +1,12 @@
+#+STARTUP: indent
+#+STARTUP: showstars
+
+* 2013/11/27
+
+** Q&A
+
+** Git
+
+** ipython
+
+** Environment variables torture

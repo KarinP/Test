@@ -24,6 +24,7 @@
 *** Looking at a repository: *gitk*
 *** The key to not getting into trouble: being systematic
 
+
 ** Getting into bussines: creating your own repository
 
 *** Initializing a git repository: *git init*
@@ -32,6 +33,14 @@
 *** Adding a file to the repository *git add*
 *** Adding changes to the repository *git add*
 *** Actually adding changes to a repository
+
+
+** Good practices
+*** Before committing, fetch!
+*** Only do pull --ff-only
+*** For the time being, if something goes wrong, contact us
+*** Do not make anonymous commits
+*** Use your own branch - but still you might want to merge with our changes
 
 ** Git internals
 *** Hashes
